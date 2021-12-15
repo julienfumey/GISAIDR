@@ -5,8 +5,7 @@ export_fasta <- function(seqs, out_file_name, export_dated_only = T){
         seqs <- seqs[!is.na(dates), ]
         dates <- dates[!is.na(dates)]
     } 
-    newnames <- paste(seqs$country, seqs$pangolin_lineage,
-                      seqs$accession_id, dates, sep = '@')
+    newnames <- seqs$strain
     cat('', file = out_file_name)
     for(i in 1:nrow(seqs)){
         cat('>', newnames[i], '\n', sep= '', file = out_file_name, append = T)
